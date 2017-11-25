@@ -11,8 +11,16 @@ $webServer = new WebServer('http://127.0.0.1:8083');
 $webServer->addRoot('localhost:8083', __DIR__ . '/../public/');
 $webServer->count = 3;
 
-$webSocketServer = new Worker('websocket://127.0.0.1:11942');
+$context = [
+    'ssl' => [
+        'local_cert' => '',
+        'local_pk' => '',
+        'verify_peer' => '',
+    ],
+];
+$webSocketServer = new Worker('websocket://127.0.0.1:11942', $context);
 $webSocketServer->count = 1;
+$webSocketServer->transport = 'ssl';
 $webSocketServer->userConnections = [];
 $webSocketServer->userQRs = [];
 $webSocketServer->onWorkerStart = function () use ($webSocketServer) {
