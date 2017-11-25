@@ -1,0 +1,20 @@
+{
+    "name": "xu42/pay",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "xu42",
+            "email": "xu42.cn@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pay\\": "src/"
+        }
+    },
+    "require": {
+        "xu42/open-sdk": "^1.0",
+        "workerman/workerman": "^3.5"
+    }
+}

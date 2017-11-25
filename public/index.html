@@ -1,0 +1,66 @@
+<html lang="zh_CN" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>在线收款 - 个人开发者的福音 - 基于有赞云</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <style>
+        body{text-align:center;background-color:#e0e0e0}#app{margin:0 auto}#app h2{padding-top:3%}#intro{padding-top:2%;text-align:center}#app img{padding-top:3%;width:280px}#app input{margin:1%}
+    </style>
+</head>
+<body>
+<div id="app">
+    <h2>在线收款Demo</h2>
+    <div id="intro">
+        1. 支持支付宝、微信、信用卡，扫码付款<br>
+        2. 无需公司资质、无需接入支付宝、微信<br>
+        3. 基于有赞云可信赖,费率低每笔交易1%<br>
+    </div>
+    <img v-bind:src="qrcode">
+    <div id="input_price">
+        <input v-model="price" placeholder="输入金额(单位: 分)">
+        <button v-on:click="generate">点此生成支付二维码</button>
+    </div>
+</div>
+
+
+<a href="https://github.com/xu42/pay"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a></body>
+
+
+<script src="//cdn.staticfile.org/vue/2.2.6/vue.min.js"></script>
+<script>
+    var clientId = '';
+    var ws = new WebSocket('ws://127.0.0.1:11942');
+    var app = new Vue({
+        el: '#app',
+        data: {
+            qrcode: 'https://img.yzcdn.cn/upload_files/2017/11/25/FlaMfOlko4gdrls7LmdfHDtoACxK.jpg',
+            price: 10
+        },
+        methods: {
+            generate: function () {
+                clientId = Math.random().toString(36).substr(2);
+                ws.send(clientId + ',' + app.price);
+            }
+        }
+    });
+
+    ws.onmessage = function (response) {
+
+        var responseObj = JSON.parse(response.data);
+
+        if (responseObj.code !== 200) {
+            alert(responseObj.msg);
+            return;
+        }
+
+        if (responseObj.event === 'pay') {
+            if (responseObj.data === 'WAIT_BUYER_PAY') app.qrcode = 'https://img.yzcdn.cn/upload_files/2017/11/25/FqZjK96_t4g3PYC7m58RHXQ4PCRm.png';
+            if (responseObj.data === 'TRADE_SUCCESS') app.qrcode = 'https://img.yzcdn.cn/upload_files/2017/11/25/FnFa-_giR389G_rtBBWspFw8esc7.png';
+        }
+
+        if (responseObj.event === 'create') {
+            app.qrcode = responseObj.data.qr;
+        }
+    };
+</script>
+</html>
