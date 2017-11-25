@@ -15,10 +15,10 @@ $context = [
     'ssl' => [
         'local_cert' => '',
         'local_pk' => '',
-        'verify_peer' => '',
+        'verify_peer' => false,
     ],
 ];
-$webSocketServer = new Worker('websocket://127.0.0.1:11942', $context);
+$webSocketServer = new Worker('websocket://0.0.0.0:11942', $context);
 $webSocketServer->count = 1;
 $webSocketServer->transport = 'ssl';
 $webSocketServer->userConnections = [];

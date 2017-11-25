@@ -6,7 +6,7 @@ $request = $GLOBALS['HTTP_RAW_POST_DATA'];
 
 echo json_encode(['code' => 0, 'msg' => 'success']);
 
-file_put_contents('yz.log', $request . PHP_EOL, FILE_APPEND);
+file_put_contents('/data/logs/www/pay.log', $request . PHP_EOL, FILE_APPEND);
 
 $request = json_decode($request, true);
 
@@ -23,4 +23,4 @@ $data = array('qrId' => $QRId, 'msg' => $request['status']);
 fwrite($client, json_encode($data) . "\n");
 $res = fread($client, 8192);
 
-file_put_contents('yz.log', 'QRID:' . (string)$QRId . '--' . 'pushRes:' . $res . PHP_EOL, FILE_APPEND);
+file_put_contents('/data/logs/www/pay.log', 'QRID:' . (string)$QRId . '--' . 'pushRes:' . $res . PHP_EOL, FILE_APPEND);
