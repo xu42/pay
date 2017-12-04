@@ -14,3 +14,7 @@
 3. 全局搜索替换`pay.xu42.cn`为你的域名
 4. 涉及到的几个端口号可以自行修改(为什么是这几个端口号? 哈哈 好问题 `119`是我女朋友生日~)
 5. 飞起来 `php /path/src/start.php`
+ 
+## 交流
+扫码加我微信 入群交流
+![微信二维码](https://wx4.sinaimg.cn/mw690/7f7fdd19gy1fm4xyujhmcj20pt0yqq6h.jpg)
