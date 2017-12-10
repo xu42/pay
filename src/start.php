@@ -34,7 +34,7 @@ $webSocketServer->onMessage = function ($connection, $message) use ($webSocketSe
         $connection->userId = $arr[0];
         $webSocketServer->userConnections[$connection->userId] = $connection;
     }
-    (new PayService)->create($connection, $arr[1]);
+    (new PayService)->create($connection, $arr[1], $arr[2]);
 };
 
 

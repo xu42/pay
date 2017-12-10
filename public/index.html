@@ -43,7 +43,8 @@
     </div>
     <img v-bind:src="qrcode">
     <div id="input_price">
-        <input v-model="price" placeholder="输入金额(单位: 分)">
+        金额(单位:分)：<input v-model="price"><br/>
+        收款理由描述：<input v-model="desc"><br/>
         <button v-on:click="generate">点此生成支付二维码</button>
     </div>
 </div>
@@ -58,10 +59,16 @@
 <script>var clientId = "";
 var ws = new WebSocket("wss://pay.xu42.cn:11942");
 var app = new Vue({
-    el: "#app", data: {qrcode: "https://img.yzcdn.cn/upload_files/2017/11/25/FlaMfOlko4gdrls7LmdfHDtoACxK.jpg", price: 10}, methods: {
+    el: "#app",
+    data: {
+        qrcode: "https://img.yzcdn.cn/upload_files/2017/11/25/FlaMfOlko4gdrls7LmdfHDtoACxK.jpg",
+        price: 100,
+        desc: "Demo By Xu42"
+    },
+        methods: {
         generate: function () {
             clientId = Math.random().toString(36).substr(2);
-            ws.send(clientId + "," + app.price)
+            ws.send(clientId + "," + app.price + "," + app.desc)
         }
     }
 });
