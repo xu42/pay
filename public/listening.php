@@ -14,8 +14,11 @@ if (empty($request) || !isset($request['kdt_id']) || !isset($request['id']) || !
     return;
 }
 
-
-$QRId = (new Service\TradeService)->getQRId($request['id']);
+$QRId = null;
+if(isset($reqMsg['qr_info']) && !empty($reqMsg['qr_info']['qr_id'])) {
+    $QRId = $reqMsg['qr_info']['qr_id'];
+}
+#$QRId = (new Service\TradeService)->getQRId($request['id']);
 if (empty($QRId)) return "send QRId is empty";
 
 $client = stream_socket_client('tcp://127.0.0.1:11900');
