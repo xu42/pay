@@ -16,5 +16,5 @@ Personal website instant payment solution  
 5. 飞起来 `php /path/src/start.php`
  
 ## Contact
- - [Telegram Group](https://t.me/joinchat/FVQbjRF89fIsdzXhn_Ol7Q)
+ - [微信公众号留言入群](https://open.weixin.qq.com/qr/code?username=gh_4a7a236c1af2)
  
