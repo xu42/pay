@@ -82,7 +82,7 @@ ws.onmessage = function (response) {
         if (responseObj.data === "WAIT_BUYER_PAY") {
             app.qrcode = "https://img.yzcdn.cn/upload_files/2017/11/25/FqZjK96_t4g3PYC7m58RHXQ4PCRm.png"
         }
-        if (responseObj.data === "TRADE_SUCCESS") {
+        if (responseObj.data === 'TRADE_SUCCESS' || responseObj.data === "PAID" || responseObj.data === "TRADE_PAID") {
             app.qrcode = "https://img.yzcdn.cn/upload_files/2017/11/25/FnFa-_giR389G_rtBBWspFw8esc7.png"
         }
     }
