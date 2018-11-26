@@ -6,6 +6,10 @@ Personal website instant payment solution  
 - [Tutorial](https://blog.xu42.cn/2017/11/26/person-website-instant-payment-solution/)
 - [Demo](https://pay.xu42.cn)
 
+## SDK
+- [youzan-sdk-go](https://github.com/xu42/youzan-sdk-go)
+- [youzan-sdk-php](https://github.com/xu42/youzan-sdk-php)
+
 ## Deploy
 ### 只提供一个思路, 不推荐部署在生产环境
 
