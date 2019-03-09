@@ -3,7 +3,7 @@
 Personal website instant payment solution   
  
 ## Links
-- [Tutorial](https://blog.xu42.cn/2017/11/26/person-website-instant-payment-solution/)
+- [Tutorial](https://blog.xu42.com/2017/11/26/person-website-instant-payment-solution/)
 - [Demo](https://pay.xu42.com)
 
 ## SDK
