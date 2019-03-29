@@ -13,7 +13,7 @@ class TradeService extends YouzanYunService
     {
         try {
             $tradeInfo = $this->getSingleTrade($orderNo);
-            return $tradeInfo['trade']['qr_id'];
+            return $tradeInfo['qr_info']['qr_id'];
         } catch (Exception $e) {
             return 0;
         }
@@ -21,17 +21,14 @@ class TradeService extends YouzanYunService
 
     public function getSingleTrade($orderNo)
     {
-        $apiVersion = $this->config['api']['version'];
+        $apiVersion = $this->config['api']['getTradeVersion'];
         $getTrade = $this->config['api']['getTrade'];
 
         $params = [
-            'tid' => $orderNo,
-            'with_childs' => false,
-            'fields' => 'qr_id'
+            'tid' => $orderNo
         ];
 
         $response = (new Client($this->getAccessToken()))->get($getTrade, $apiVersion, $params);
-        var_dump($response);
         if (!isset($response['response'])) throw new Exception('wrong getTrade');
         return $response['response'];
     }

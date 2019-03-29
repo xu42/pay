@@ -18,6 +18,7 @@ class YouzanYunService
             'clientSecret' => '0000',
             'api' => [
                 'version' => '3.0.0',
+                'getTradeVersion' => '4.0.0',
                 'getTrade' => 'youzan.trade.get',
                 'createPayQRCode' => 'youzan.pay.qrcode.create',
             ],
