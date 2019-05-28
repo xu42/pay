@@ -14,7 +14,7 @@
         }
     },
     "require": {
-        "xu42/open-sdk": "^1.0",
+        "youzanyun/open-sdk": "dev-carmen",
         "workerman/workerman": "^3.5"
     }
 }
