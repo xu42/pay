@@ -23,3 +23,4 @@ Personal website instant payment solution  
  - [微信公众号留言入群](https://open.weixin.qq.com/qr/code?username=gh_4a7a236c1af2)
  - [Telegram Group](https://t.me/OurPay)
  
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
